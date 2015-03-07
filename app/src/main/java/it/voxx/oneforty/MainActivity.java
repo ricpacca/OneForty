@@ -20,15 +20,15 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button pulsante = (Button) findViewById(R.id.button2);
+        final Button pulsante = (Button) findViewById(R.id.button2);
 
         pulsante.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                Log.i("asd", "ciao");
-                Intent i = new Intent(context, MainActivity.class);
-                context.startActivity(i);
+
+                if (pulsante.getVisibility() == View.VISIBLE)
+                    pulsante.setVisibility(View.GONE);
             }
         });
     }
