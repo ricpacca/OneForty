@@ -35,15 +35,14 @@
                 android:layout_width="220dp"
                 android:layout_height="wrap_content"
                 android:text="Login con Twitter"
-                android:id="@+id/button"/>
+                android:id="@+id/login"/>
 
             <Button
                 android:layout_width="220dp"
                 android:layout_height="wrap_content"
                 android:text="Salta"
-                android:id="@+id/button2"
-                android:layout_marginTop="4dp"
-                style="?android:attr/borderlessButtonStyle" />
+                android:id="@+id/salta"
+                android:layout_marginTop="4dp" />
 
         </LinearLayout>
 

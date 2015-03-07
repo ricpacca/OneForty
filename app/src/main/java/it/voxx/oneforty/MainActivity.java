@@ -19,18 +19,6 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        final Button pulsante = (Button) findViewById(R.id.button2);
-
-        pulsante.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-
-                if (pulsante.getVisibility() == View.VISIBLE)
-                    pulsante.setVisibility(View.GONE);
-            }
-        });
     }
 
 
