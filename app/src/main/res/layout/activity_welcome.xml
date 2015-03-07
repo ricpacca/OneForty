@@ -3,9 +3,9 @@
     android:layout_height="match_parent"
     android:id="@+id/container"
     android:background="@android:color/white" tools:context=".Welcome"
-    android:orientation="vertical"
     android:fitsSystemWindows="true"
-    android:weightSum="10">
+    android:weightSum="10"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -31,12 +31,11 @@
             android:layout_marginTop="40dp"
             android:layout_centerHorizontal="true">
 
-            <Button
-                android:layout_width="220dp"
+            <com.twitter.sdk.android.core.identity.TwitterLoginButton
+                android:id="@+id/login"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Login con Twitter"
-                android:id="@+id/login"/>
-
+                android:layout_centerInParent="true"/>
             <Button
                 android:layout_width="220dp"
                 android:layout_height="wrap_content"

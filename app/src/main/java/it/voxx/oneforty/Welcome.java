@@ -1,7 +1,9 @@
 package it.voxx.oneforty;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,14 +14,21 @@ import com.twitter.sdk.android.core.TwitterAuthConfig;
 import io.fabric.sdk.android.Fabric;
 import android.view.View;
 import android.widget.Button;
+import android.content.Intent;
+import com.twitter.sdk.android.core.Callback;
+import com.twitter.sdk.android.core.Result;
+import com.twitter.sdk.android.core.TwitterException;
+import com.twitter.sdk.android.core.TwitterSession;
+import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 
+import java.util.logging.Logger;
 
 public class Welcome extends ActionBarActivity {
 
     // Note: Your consumer key and secret should be obfuscated in your source code before shipping.
     private static final String TWITTER_KEY = "oOBoRQUP5WohyWhduOoWMDPue";
     private static final String TWITTER_SECRET = "jGcocBTc152xwOkXdsNm4IUdhmaLKCmSuAVAqNcBimjZYSsMCT";
-
+    private TwitterLoginButton loginButton;
     Context context = this;
 
     @Override
@@ -30,16 +39,37 @@ public class Welcome extends ActionBarActivity {
         setContentView(R.layout.activity_welcome);
 
         final Button pulsante = (Button) findViewById(R.id.salta);
+        loginButton = (TwitterLoginButton) findViewById(R.id.login);
+        loginButton.setCallback(new Callback<TwitterSession>() {
 
+            @Override
+            public void success(Result<TwitterSession> result) {
+                Logger.getGlobal().info("ACCESS");
+                // Show Success Massage
+                goToMainActivity();
+            }
+
+
+            @Override
+            public void failure(TwitterException exception) {
+                Logger.getGlobal().info("FAIL");
+                // Show Error message
+                goToMainActivity();
+            }
+        });
         pulsante.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(context, MainActivity.class);
-                context.startActivity(i);
-                finish();
+                goToMainActivity();
             }
         });
+    }
+
+    private void goToMainActivity() {
+        Intent i = new Intent(context, MainActivity.class);
+        context.startActivity(i);
+        finish();
     }
 
 
