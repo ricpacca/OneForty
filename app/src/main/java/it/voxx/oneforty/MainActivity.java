@@ -29,7 +29,6 @@ public class MainActivity extends ActionBarActivity {
 
                 if (pulsante.getVisibility() == View.VISIBLE)
                     pulsante.setVisibility(View.GONE);
-
             }
         });
     }
